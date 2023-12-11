@@ -1,0 +1,36 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.sidebar {
+    background-color: #555555;
+    color: #ffffff;
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+.content {
+    padding: 20px;
+}
+
+.item-box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.remove-btn {
+    cursor: pointer;
+}
+
+.card {
+    margin: 5px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+
+

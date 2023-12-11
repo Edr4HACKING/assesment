@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Starbhak Mart</title>
+    <style>
+        /* Tambahkan gaya sesuai kebutuhan */
+    </style>
+</head>
+
+<body>
+
+    <!-- Splash Screen -->
+    <div class="splash-screen">
+        <!-- Konten splash screen -->
+    </div>
+
+    <!-- Tampilan Produk -->
+    <div class="container mt-3">
+        <h2>Produk</h2>
+        <div class="row" id="product-list">
+            <!-- Item produk statis -->
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="gambar_produk1.jpg" class="card-img-top" alt="Produk 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Egg Sandwich</h5>
+                        <p class="card-text">$10.00</p>
+                        <button class="btn btn-success add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tambahkan item lain di sini -->
+        </div>
+    </div>
+
+    <!-- Tampilan Keranjang -->
+    <div class="container mt-3">
+        <h2>Keranjang</h2>
+        <ul id="cart-list">
+            <!-- Daftar pemesanan -->
+        </ul>
+        <p id="total">Total: $0.00</p>
+        <button class="btn btn-primary" onclick="calculateTotal()">Hitung Total</button>
+    </div>
+
+    <!-- Library JS -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Tambahkan event listener untuk tombol "Add to Cart"
+            $(".add-to-cart").on("click", function () {
+                var productName = $(this).siblings(".card-title").text();
+                var productPrice = parseFloat($(this).siblings(".card-text").text().replace("$", ""));
+                addToCart(productName, productPrice);
+            });
+        });
+
+        // Fungsi untuk menambahkan item ke keranjang
+        function addToCart(name, price) {
+            var listItem = $("<li>").text(name + " - $" + price.toFixed(2));
+            $("#cart-list").append(listItem);
+        }
+
+        // Fungsi untuk menghitung total
+        function calculateTotal() {
+            var total = 0;
+            $("#cart-list li").each(function () {
+                var price = parseFloat($(this).text().split("$")[1]);
+                total += price;
+            });
+
+            // Hitung pajak (10%)
+            var tax = 0.1 * total;
+
+            // Total harga (total sebelum pajak + pajak)
+            var totalAmount = total + tax;
+
+            // Tampilkan total
+            $("#total").text("Total: $" + totalAmount.toFixed(2));
+        }
+    </script>
+
+</body>
+
+</html>

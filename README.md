@@ -1,2 +1,2 @@
-# makasi pak bu dah menemai assesment saya
+# makasi pak bu sudah menemani assesment saya
 # thanks for years
